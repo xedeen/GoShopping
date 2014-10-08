@@ -1,0 +1,18 @@
+﻿<xapCache source="D:\GoShopping\GoShopping\GoShopping\Bin\ARM\Debug\GoShopping_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="9/11/2014 3:23:37 AM">
+  <file source="D:\GoShopping\GoShopping\GoShopping\obj\ARM\Debug\GoShopping.dll" archivePath="GoShopping.dll" lastWriteTime="9/11/2014 3:23:35 AM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Delete.png" archivePath="Assets\Delete.png" lastWriteTime="9/11/2014 3:10:41 AM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Microphone.png" archivePath="Assets\Microphone.png" lastWriteTime="9/11/2014 2:23:16 AM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="9/11/2014 1:04:02 AM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\ARM\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.winmd" archivePath="Yandex.SpeechKit.winmd" lastWriteTime="9/11/2014 12:52:53 AM" />
+  <file source="D:\GoShopping\GoShopping\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.WP8.dll" archivePath="Yandex.SpeechKit.WP8.dll" lastWriteTime="9/11/2014 12:52:53 AM" />
+  <file source="D:\GoShopping\GoShopping\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.dll" archivePath="Yandex.SpeechKit.dll" lastWriteTime="9/11/2014 12:52:53 AM" />
+  <file source="D:\GoShopping\GoShopping\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.WP8.xml" archivePath="Yandex.SpeechKit.WP8.xml" lastWriteTime="9/11/2014 12:52:53 AM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="9/11/2014 1:20:20 AM" />
+</xapCache>

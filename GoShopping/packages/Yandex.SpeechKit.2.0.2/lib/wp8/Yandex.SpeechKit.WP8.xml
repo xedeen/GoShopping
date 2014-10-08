@@ -1,0 +1,693 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Yandex.SpeechKit.WP8</name>
+    </assembly>
+    <members>
+        <member name="T:Yandex.SpeechKit.SpeechKitInitializer">
+            <summary>
+            Static class that contains methods to manage SpeechKit configuration and initialization.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.SpeechKitInitializer.Configure(System.String)">
+             <summary>
+             Configures SpeechKit with specified API Key.
+             This method must be called before accessing any SpeechKit objects.
+            
+             Note that the actual API Key validation is performed during the  backend operations (e.g. Startup)
+             and may result in <see cref="F:Yandex.SpeechKit.ErrorCode.ApiKey"/> error.
+             </summary>
+             <param name="apiKey">
+             API Key provided by Yandex.
+             Refer to http://developer.yandex.ru to generate and control your API key.
+             </param>
+        </member>
+        <member name="M:Yandex.SpeechKit.SpeechKitInitializer.Configure(System.String,Yandex.SpeechKit.ILocationProvider)">
+             <summary>
+             Configures SpeechKit with specified API Key and <see cref="T:Yandex.SpeechKit.ILocationProvider"/>.
+             This method must be called before accessing any SpeechKit objects.
+            
+             Note that the actual API Key validation is performed during the  backend operations (e.g. Startup)
+             and may result in <see cref="F:Yandex.SpeechKit.ErrorCode.ApiKey"/> error.
+             </summary>
+             <param name="apiKey">
+             API Key provided by Yandex.
+             Refer to http://developer.yandex.ru to generate and control your API key.
+             </param>
+             <param name="locationProvider">
+             Object that provides information about current location.
+             </param>
+        </member>
+        <member name="M:Yandex.SpeechKit.SpeechKitInitializer.GetParameter(System.String)">
+            <summary>
+            Returns extra SpeechKit's parameter value.
+            </summary>
+            <param name="name">Parameter name.</param>
+            <returns>Parameter value.</returns>
+        </member>
+        <member name="M:Yandex.SpeechKit.SpeechKitInitializer.SetParameter(System.String,System.String)">
+            <summary>
+            Sets extra SpeechKit's parameter value.
+            </summary>
+            <param name="name">Parameter name.</param>
+            <param name="value">Parameter value.</param>
+        </member>
+        <member name="M:Yandex.SpeechKit.SpeechKitInitializer.InitializeAsync">
+            <summary>
+            Performs the initialization request.
+            </summary>
+            <returns>The asynchronous initialization operation.</returns>
+        </member>
+        <member name="P:Yandex.SpeechKit.SpeechKitInitializer.Version">
+            <summary>
+            Gets the SpeechKit version.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.SpeechKitInitializer.IsLocationEnabled">
+            <summary>
+            Gets or sets the value indicating if SpeechKit is allowed to send location information.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.SpeechKitInitializer.IsInitializationCompleted">
+            <summary>
+            Gets the value indicating if the SpeechKit initialization has already been completed.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.SpeechKitException">
+            <summary>
+            Represents an error that occurs during SpeechKit execution.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.SpeechKitException.#ctor(Yandex.SpeechKit.Error)">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.SpeechKitException"/> class with specified error message.
+            </summary>
+            <param name="error">Error object.</param>
+        </member>
+        <member name="P:Yandex.SpeechKit.SpeechKitException.Error">
+            <summary>
+            Gets the error object.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.MicrophoneControl">
+            <summary>
+            Control that represents a scalable microphone image.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.MicrophoneControl.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.MicrophoneControl"/> class.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.FrameworkElementExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Windows.FrameworkElement"/>.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.FrameworkElementExtensions.SubscribeToPropertyChanged(System.Windows.FrameworkElement,System.String,System.Windows.PropertyChangedCallback)">
+            <summary>
+            Subscribes to the dependency property change notifications.
+            </summary>
+            <param name="element">Source framework element.</param>
+            <param name="propertyName">Dependency property name.</param>
+            <param name="callback">Dependency property change callback.</param>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.GestureHelper">
+            <summary>
+            Contains attached properties for gesture events handling.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.GestureHelper.TapCommandProperty">
+            <summary>
+            Defines the TapCommand attached property.
+            Command is invoked when the <see cref="F:System.Windows.UIElement.TapEvent"/> is triggered.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.GestureHelper.SetTapCommand(System.Windows.UIElement,System.Windows.Input.ICommand)">
+            <summary>
+            Sets the TapCommand attached property value.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.GestureHelper.GetTapCommand(System.Windows.UIElement)">
+            <summary>
+            Gets the TapCommand attached property value.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.ProcessingControl">
+            <summary>
+            Control that is shown in the <see cref="T:Yandex.SpeechKit.UI.RecognizerControl"/> during its processing state.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.ProcessingControl.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.ProcessingControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.ProcessingControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.RecognizerView">
+            <summary>
+            SpeechKit recognizer UI.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerView.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.RecognizerView"/> class;
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerView.StartRecognition(System.String,Yandex.SpeechKit.LanguageModel)">
+            <summary>
+            Starts recognition.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerView.CancelRecognition">
+            <summary>
+            Cancels recognition.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.RecorderControl">
+            <summary>
+            Control which is shown in the <see cref="T:Yandex.SpeechKit.UI.RecognizerControl"/> during its recording state.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecorderControl.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.RecorderControl"/> class.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecorderControl.PowerProperty">
+            <summary>
+            Defines the <see cref="P:Yandex.SpeechKit.UI.RecorderControl.Power"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecorderControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecorderControl.Power">
+            <summary>
+            Gets or sets voice power level.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.Helpers.DeviceInfo.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.Helpers.DeviceInfo"/> class.
+            Must be called from the UI thread.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.CanBeNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could be <c>null</c> sometimes,
+            so the check for <c>null</c> is necessary before its usage
+            </summary>
+            <example><code>
+            [CanBeNull] public object Test() { return null; }
+            public void UseTest() {
+              var p = Test();
+              var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could never be <c>null</c>
+            </summary>
+            <example><code>
+            [NotNull] public object Foo() {
+              return null; // Warning: Possible 'null' assignment
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.StringFormatMethodAttribute">
+            <summary>
+            Indicates that the marked method builds string by format pattern and (optional) arguments.
+            Parameter, which contains format string, should be given in constructor. The format string
+            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form
+            </summary>
+            <example><code>
+            [StringFormatMethod("message")]
+            public void ShowError(string message, params object[] args) { /* do something */ }
+            public void Foo() {
+              ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+            }
+            </code></example>
+        </member>
+        <member name="M:JetBrains.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <param name="formatParameterName">
+            Specifies which parameter of an annotated method should be treated as format-string
+            </param>
+        </member>
+        <member name="T:JetBrains.Annotations.InvokerParameterNameAttribute">
+            <summary>
+            Indicates that the function argument should be string literal and match one
+            of the parameters of the caller function. For example, ReSharper annotates
+            the parameter of <see cref="T:System.ArgumentNullException"/>
+            </summary>
+            <example><code>
+            public void Foo(string param) {
+              if (param == null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotifyPropertyChangedInvocatorAttribute">
+             <summary>
+             Indicates that the method is contained in a type that implements
+             <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface
+             and this method is used to notify that some property value changed
+             </summary>
+             <remarks>
+             The method should be non-static and conform to one of the supported signatures:
+             <list>
+             <item><c>NotifyChanged(string)</c></item>
+             <item><c>NotifyChanged(params string[])</c></item>
+             <item><c>NotifyChanged{T}(Expression{Func{T}})</c></item>
+             <item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item>
+             <item><c>SetProperty{T}(ref T, T, string)</c></item>
+             </list>
+             </remarks>
+             <example><code>
+             public class Foo : INotifyPropertyChanged {
+               public event PropertyChangedEventHandler PropertyChanged;
+               [NotifyPropertyChangedInvocator]
+               protected virtual void NotifyChanged(string propertyName) { ... }
+            
+               private string _name;
+               public string Name {
+                 get { return _name; }
+                 set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+               }
+             }
+             </code>
+             Examples of generated notifications:
+             <list>
+             <item><c>NotifyChanged("Property")</c></item>
+             <item><c>NotifyChanged(() =&gt; Property)</c></item>
+             <item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item>
+             <item><c>SetProperty(ref myField, value, "Property")</c></item>
+             </list>
+             </example>
+        </member>
+        <member name="T:JetBrains.Annotations.UsedImplicitlyAttribute">
+            <summary>
+            Indicates that the marked symbol is used implicitly
+            (e.g. via reflection, in external library), so this symbol
+            will not be marked as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.MeansImplicitUseAttribute">
+            <summary>
+            Should be used on attributes and causes ReSharper
+            to not mark symbols marked with such attributes as unused
+            (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Access">
+            <summary>Only entity marked with attribute considered used</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Assign">
+            <summary>Indicates implicit assignment to a member</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <summary>Indicates implicit instantiation of a type</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseTargetFlags">
+            <summary>
+            Specify what is considered used implicitly
+            when marked with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/>
+            or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Members">
+            <summary>Members of entity marked with attribute are considered used</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <summary>Entity marked with attribute and all its members considered used</summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ButtonCancel">
+            <summary>
+              Looks up a localized string similar to cancel.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ButtonFinish">
+            <summary>
+              Looks up a localized string similar to finish.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ButtonRetry">
+            <summary>
+              Looks up a localized string similar to retry.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ErrorCanceled">
+            <summary>
+              Looks up a localized string similar to Operation canceled.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ErrorNetwork">
+            <summary>
+              Looks up a localized string similar to Connection error.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ErrorNoResults">
+            <summary>
+              Looks up a localized string similar to This phrase was not recognized.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ErrorNoVoice">
+            <summary>
+              Looks up a localized string similar to I can&apos;t hear you.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.ErrorUnknown">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.StatusInitializing">
+            <summary>
+              Looks up a localized string similar to Loading.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.StatusProcessing">
+            <summary>
+              Looks up a localized string similar to Processing.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.StatusRecording">
+            <summary>
+              Looks up a localized string similar to Speak now.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.Properties.Resources.StatusResults">
+            <summary>
+              Looks up a localized string similar to Are you looking for:.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.RecognitionFinishedEventArgs">
+            <summary>
+            Arguments for the <see cref="E:Yandex.SpeechKit.UI.RecognizerView.Finished"/> event handler.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognitionFinishedEventArgs.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.RecognitionFinishedEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognitionFinishedEventArgs.Result">
+            <summary>
+            Gets the result obtained from the speech recognizer.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.ResultViewModel">
+            <summary>
+            View-model for the recognition result item.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.ViewModelBase">
+            <summary>
+            Base class for view-models.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.ViewModelBase.OnPropertyChanged(System.String)">
+            <summary>
+            Called before <see cref="E:Yandex.SpeechKit.UI.ViewModelBase.PropertyChanged"/> event.
+            </summary>
+        </member>
+        <member name="E:Yandex.SpeechKit.UI.ViewModelBase.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.ResultViewModel.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.ResultViewModel"/> class.
+            </summary>
+            <param name="text">Result text.</param>
+        </member>
+        <member name="E:Yandex.SpeechKit.UI.ResultViewModel.Selected">
+            <summary>
+            Occurs when the user selects current result.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.ResultViewModel.SelectCommand">
+            <summary>
+            Command that is executed when the user selects current recognition result.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.ResultViewModel.Text">
+            <summary>
+            Gets the recognized text.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.RecognizerViewState">
+            <summary>
+            View state of the <see cref="T:Yandex.SpeechKit.UI.RecognizerControl"/>.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecognizerViewState.Empty">
+            <summary>
+            View is empty.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecognizerViewState.Initializing">
+            <summary>
+            Recognizer is initializing.
+            View displays initializing animation.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecognizerViewState.Recording">
+            <summary>
+            Recognizer is recording voice.
+            View displays microphone with sound level animation.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecognizerViewState.Processing">
+            <summary>
+            Recognizer is processing voice.
+            View displays processing animation.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecognizerViewState.Error">
+            <summary>
+            View displays an error message.
+            </summary>
+        </member>
+        <member name="F:Yandex.SpeechKit.UI.RecognizerViewState.Results">
+            <summary>
+            View displays recognition results.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.RecognizerViewModel">
+            <summary>
+            View-model for the speech recognizer UI.
+            Call <see cref="M:Yandex.SpeechKit.SpeechKitInitializer.Configure(System.String)"/> before using speech recognizer.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.#ctor(System.String,Yandex.SpeechKit.LanguageModel)">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.RecognizerViewModel"/> class.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnFinished(Yandex.SpeechKit.UI.RecognitionFinishedEventArgs)">
+            <summary>
+            Called before the <see cref="E:Yandex.SpeechKit.UI.RecognizerViewModel.Finished"/> event.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.StartRecognition">
+            <summary>
+            Starts the recognition.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.CancelRecognition">
+            <summary>
+            Cancels the recognition.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnStateChanged(Yandex.SpeechKit.UI.RecognizerViewState)">
+            <summary>
+            The method is called when <see cref="P:Yandex.SpeechKit.UI.RecognizerViewModel.State"/> property changes.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnFinishRecording">
+            <summary>
+            The method is called when the user taps the Finish button.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnCancel">
+            <summary>
+            The method is called when the user taps the Cancel button.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnRetry">
+            <summary>
+            The method is called when the user taps the Retry button.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnProcessRecognitionResults(System.String,System.String[])">
+            <summary>
+            The method is called when recognition completes.
+            Override this method to add filtering logic.
+            </summary>
+            <param name="confidentResult">Confident result. Can be null.</param>
+            <param name="results">Array of results. Empty, if server didn't recognize the phrase.</param>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnConfidentResult(System.String)">
+            <summary>
+            The method is called when recognition completes with a confident result.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnResult(System.String)">
+            <summary>
+            The method is called when the user selects a result from the list.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerViewModel.OnError(Yandex.SpeechKit.Error)">
+            <summary>
+            The method is called when an error occurres.
+            </summary>
+        </member>
+        <member name="E:Yandex.SpeechKit.UI.RecognizerViewModel.Finished">
+            <summary>
+            Occurs when the recognition is finished (successfully completed or canceled).
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.FinishCommand">
+            <summary>
+            Gets the command which is invoked when user taps the Finish button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.CancelCommand">
+            <summary>
+            Gets the command which is invoked when user taps the Cancel button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.RetryCommand">
+            <summary>
+            Gets the command which is invoked when user taps the Retry button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.Text">
+            <summary>
+            Gets or sets the caption of the recognizer control.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.Power">
+            <summary>
+            Gets the voice power level.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.Results">
+            <summary>
+            Gets the collection of recognition results.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.CancelVisibility">
+            <summary>
+            Gets the visibility of the Cancel button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.CancelFinishVisibility">
+            <summary>
+            Gets the visibility of the Cancel and Finish buttons.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.CancelRetryVisibility">
+            <summary>
+            Gets the visibility of the Cancel and Retry buttons.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.InitializingVisibility">
+            <summary>
+            Gets the visibility of the initialization indicator.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.MicrophoneVisibility">
+            <summary>
+            Gets the visibility of the recorder control.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.ResultsVisibility">
+            <summary>
+            Gets the visibility of the recognition results.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.ProcessingVisibility">
+            <summary>
+            Gets the visibility of the recognition progress indicator.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.ErrorVisibility">
+            <summary>
+            Gets the visibility of the error control.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.CancelText">
+            <summary>
+            Gets text for the Cancel button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.FinishText">
+            <summary>
+            Gets text for the Finish button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.RetryText">
+            <summary>
+            Gets text for the Retry button.
+            </summary>
+        </member>
+        <member name="P:Yandex.SpeechKit.UI.RecognizerViewModel.State">
+            <summary>
+            Gets or sets current view state.
+            </summary>
+        </member>
+        <member name="T:Yandex.SpeechKit.UI.RecognizerControl">
+            <summary>
+            Represents the speech recognition control without any internal logic.
+            Requires view-model.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerControl.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Yandex.SpeechKit.UI.RecognizerControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Yandex.SpeechKit.UI.RecognizerControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

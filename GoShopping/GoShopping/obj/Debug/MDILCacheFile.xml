@@ -1,0 +1,12 @@
+﻿<xapCache source="D:\GoShopping\GoShopping\GoShopping\Bin\Debug\GoShopping_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="9/11/2014 12:46:51 AM">
+  <file source="D:\GoShopping\GoShopping\GoShopping\obj\Debug\GoShopping.dll" archivePath="GoShopping.dll" lastWriteTime="9/11/2014 12:46:50 AM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="9/10/2014 11:55:07 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="9/10/2014 10:42:21 PM" />
+  <file source="D:\GoShopping\GoShopping\GoShopping\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="9/10/2014 11:55:08 PM" />
+</xapCache>
