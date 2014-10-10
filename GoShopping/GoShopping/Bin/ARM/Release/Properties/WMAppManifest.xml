@@ -26,22 +26,27 @@
           <Count>0</Count>
           <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMediumLarge.png</IconImageURI>
           <Title>За покупками</Title>
-          <Message>
-          </Message>
-          <BackgroundColor>
-          </BackgroundColor>
+          <Message></Message>
+          <BackgroundColor></BackgroundColor>
           <HasLarge>false</HasLarge>
-          <LargeContent1>
-          </LargeContent1>
-          <LargeContent2>
-          </LargeContent2>
-          <LargeContent3>
-          </LargeContent3>
-          <DeviceLockImageURI IsRelative="true" IsResource="false">
-          </DeviceLockImageURI>
+          <LargeContent1></LargeContent1>
+          <LargeContent2></LargeContent2>
+          <LargeContent3></LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
         </TemplateIconic>
       </PrimaryToken>
     </Tokens>
+    <ActivatableClasses>
+      <InProcessServer>
+        <Path>Yandex.SpeechKit.dll</Path>
+        <ActivatableClass ActivatableClassId="Yandex.SpeechKit.StringPair" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Yandex.SpeechKit.Location" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Yandex.SpeechKit.Error" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Yandex.SpeechKit.SpeechKit" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Yandex.SpeechKit.Initializer" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Yandex.SpeechKit.Recognizer" ThreadingModel="both" />
+      </InProcessServer>
+    </ActivatableClasses>
     <ScreenResolutions>
       <ScreenResolution Name="ID_RESOLUTION_WVGA" />
       <ScreenResolution Name="ID_RESOLUTION_WXGA" />
@@ -49,3 +54,4 @@
     </ScreenResolutions>
   </App>
 </Deployment>
+<!-- WPSDK Version 8.0.9900 -->
