@@ -4,16 +4,19 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using GoShopping.Code;
 using GoShopping.Interactions;
 using GoShopping.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GoShopping.Resources;
 using Microsoft.Phone.Tasks;
+using Microsoft.Phone.UserData;
 using Microsoft.Xna.Framework;
 
 namespace GoShopping
@@ -25,6 +28,9 @@ namespace GoShopping
     private InteractionManager _interactionManager = new InteractionManager();
 
     private PinchAddNewInteraction _pinchAddNewItemInteraction;
+
+    //private AutoResetEvent _contactSearchEvt = new AutoResetEvent(false);
+    //private Contact _foundContact;
 
     public string RetrievedText { get; set; }
     // Constructor
@@ -138,51 +144,39 @@ namespace GoShopping
     private void ProcessRetrievedText()
     {
       var source = RetrievedText.Trim().ToLowerInvariant();
+      RetrievedText = string.Empty;
+      var lex = LexCmd.FromString(source);
 
-      if (source.StartsWith("отослать") || source.StartsWith("выслать") || source.StartsWith("переслать")
-          || source.StartsWith("отправить"))
+      if (null != lex)
       {
-        ParseSendCmd(source);
-        return;
-      }
-
-      ParseAddItemsCmd(source);
-    }
-
-    private void ParseSendCmd(string source)
-    {
-      var result = source.Split();
-      if (result.Length > 1)
-      {
-
-      }
-    }
-
-
-    private void ParseAddItemsCmd(string source)
-    {
-      var separators = new string[]
-      {
-        ",",
-        ".",
-        " и ",
-        " дальше ",
-        " далее ",
-        " еще ",
-        " запятая "
-      };
-
-      var result = source.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-      foreach (var s in result)
-      {
-        if (!_viewModel.Items.Any(item => item.Text.Equals(s, StringComparison.InvariantCultureIgnoreCase)))
+        switch (lex.CommandType)
         {
-          var name = s.Trim().ToLowerInvariant();
-          if (!string.IsNullOrEmpty(name))
-          {
-            name = name.First().ToString(CultureInfo.InvariantCulture).ToUpperInvariant() + name.Substring(1);
-            _viewModel.Items.Add(new ShoppingItemViewModel(name));
-          }
+          case CommandType.Items:
+            if (lex.Direction == CommandDirection.Add)
+            {
+              foreach (var newItem in lex.Items.Where(newItem => !_viewModel.Items.Any(item => item.Text.Equals(newItem, StringComparison.InvariantCultureIgnoreCase))))
+              {
+                _viewModel.Items.Add(new ShoppingItemViewModel(newItem));
+              }
+            }
+            if (lex.Direction == CommandDirection.Remove)
+            {
+              foreach (var remItem in lex.Items)
+              {
+                var existing = _viewModel.Items.FirstOrDefault(item => item.Text.Equals(remItem, StringComparison.InvariantCultureIgnoreCase));
+                if (null != existing)
+                {
+                  _viewModel.Items.Remove(existing);
+                }
+              }
+            }
+            break;
+          case CommandType.SendMail:
+            CreateEMail(lex.ContactName);
+            break;
+          case CommandType.SendMessage:
+            CreateSms(lex.ContactName);
+            break;
         }
       }
     }
@@ -203,6 +197,35 @@ namespace GoShopping
       CreateEMail();
     }
 
+    /*private string SearchContacts(string name, bool bPhone)
+    {
+      var result = string.Empty;
+      var cons = new Contacts();
+      cons.SearchCompleted +=cons_SearchCompleted;
+      cons.SearchAsync(name, FilterKind.None, null);
+      if (_contactSearchEvt.WaitOne(3000))
+      {
+        if (null != _foundContact)
+        {
+          result = bPhone
+            ? _foundContact.PhoneNumbers.Any()
+              ? _foundContact.PhoneNumbers.First().PhoneNumber
+              : string.Empty
+            : _foundContact.EmailAddresses.Any()
+              ? _foundContact.EmailAddresses.First().EmailAddress
+              : string.Empty;
+          _foundContact = null;
+        }
+      }
+      return result;
+    }*/
+
+    //private void cons_SearchCompleted(object sender, ContactsSearchEventArgs e)
+    //{
+    //  _foundContact = e.Results.FirstOrDefault();
+    //  _contactSearchEvt.Set();
+    //}
+
     private string CreateListText()
     {
       var text = string.Empty;
@@ -215,13 +238,15 @@ namespace GoShopping
       return i > 0 ? text : string.Empty;
     }
 
-    private void CreateEMail()
+    private void CreateEMail(string address = null)
     {
       var text = CreateListText();
+
       if (!string.IsNullOrEmpty(text))
       {
         var emailTask = new EmailComposeTask
         {
+          //To = SearchContacts(address, false),
           Subject = "Список покупок",
           Body = "Купить:\r\n" + text
         };
@@ -233,14 +258,14 @@ namespace GoShopping
       }
     }
 
-    private void CreateSms()
+    private void CreateSms(string address = null)
     {
       var text = CreateListText();
       if (!string.IsNullOrEmpty(text))
       {
         var smsTask = new SmsComposeTask
         {
-          //To =
+          //To = SearchContacts(address,true),
           Body = "Купить:\r\n" + text
         };
         smsTask.Show();
