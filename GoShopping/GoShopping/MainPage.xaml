@@ -147,8 +147,53 @@
                 VerticalAlignment="Top"
                 Visibility="Collapsed"/>
             </Grid>
+          <Popup Name="PastePopup"
+                 Opacity="1">
+        <Grid
+          Background="White">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+          </Grid.RowDefinitions>
+          <TextBox Name="PasteBox" 
+                   BorderBrush="Black"
+                     Width="480"
+                     Height="250"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     ></TextBox>
+          <Grid Row="1">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button 
+              Foreground="Black"
+              BorderBrush="Black"
+              Content="Заменить"
+              Click="ButtonClipReplace_OnClick"></Button>
+            <Button 
+              Grid.Column="1"
+              Foreground="Black"
+              BorderBrush="Black"
+              Content="Дописать"
+              Click="ButtonClipAdd_OnClick">
+            </Button>
+            <Button 
+              Grid.Column="2"
+              Foreground="Black"
+              BorderBrush="Black"
+              Content="Отменить"
+              Click="ButtonClipCancel_OnClick"></Button>
+          </Grid>
         </Grid>
+
+      </Popup>
+        </Grid>
+      
     </Grid>
+  
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/Microphone.png" Text="Говорите!" Click="RecognizeButton_OnClick"/>
@@ -157,7 +202,9 @@
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="SMSSend_OnClick" Text="отправить список в СМС" />
                 <shell:ApplicationBarMenuItem Click="EmailSend_OnClick" Text="отправить список в e-mail" />
-            </shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Click="ClipboardSend_OnClick" Text="отправить в буфер обмена" />
+                <shell:ApplicationBarMenuItem Click="ClipboardGet_OnClick" Text="вставить из в буфера обмена" />
+      </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

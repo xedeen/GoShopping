@@ -5,7 +5,7 @@
     <Language code="ru" />
     <Language code="ru-RU" />
   </Languages>
-  <App xmlns="" ProductID="{ccf0dc80-4675-4bcd-8c81-262663f2a20e}" Title="За покупками" RuntimeType="Silverlight" Version="1.0.0.2" Genre="apps.normal" Author="Eugen Surovets" Description="Составьте свой список покупок и контролируйте его!" Publisher="GoShopping" PublisherID="{b419454c-2b83-4d79-88b7-6745df34dbe6}">
+  <App xmlns="" ProductID="{ccf0dc80-4675-4bcd-8c81-262663f2a20e}" Title="За покупками!" RuntimeType="Silverlight" Version="1.0.0.2" Genre="apps.normal" Author="Eugen Surovets" Description="Составьте свой список покупок и контролируйте его!" Publisher="GoShopping" PublisherID="{b419454c-2b83-4d79-88b7-6745df34dbe6}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

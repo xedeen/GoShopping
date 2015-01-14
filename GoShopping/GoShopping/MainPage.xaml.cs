@@ -197,6 +197,44 @@ namespace GoShopping
       CreateEMail();
     }
 
+    private void ClipboardSend_OnClick(object sender, EventArgs e)
+    {
+      SendToClipBoard();
+    }
+
+    private void ClipboardGet_OnClick(object sender, EventArgs e)
+    {
+      if (!Clipboard.ContainsText())
+        return;
+
+      PastePopup.IsOpen = true;
+      PasteBox.Focus();
+    }
+
+    private void ButtonClipReplace_OnClick(object sender, RoutedEventArgs e)
+    {
+      _viewModel.Items.Clear();
+      ButtonClipAdd_OnClick(sender, e);
+    }
+
+    private void ButtonClipAdd_OnClick(object sender, RoutedEventArgs e)
+    {
+      PastePopup.IsOpen = false;
+      var items = TryParseClipboard(PasteBox.Text);
+      if (null != items && items.Count > 0)
+      {
+        foreach (var item in items)
+        {
+          _viewModel.Items.Add(item);
+        }
+      }
+    }
+
+    private void ButtonClipCancel_OnClick(object sender, RoutedEventArgs e)
+    {
+      PastePopup.IsOpen = false;
+    }
+
     /*private string SearchContacts(string name, bool bPhone)
     {
       var result = string.Empty;
@@ -226,6 +264,30 @@ namespace GoShopping
     //  _contactSearchEvt.Set();
     //}
 
+    private List<ShoppingItemViewModel> TryParseClipboard(string text)
+    {
+      if (string.IsNullOrEmpty(text))
+        return null;
+      var list = new List<ShoppingItemViewModel>();
+
+      foreach (var line in text.Split('\r'))
+      {
+        var subStr = line;
+        if (!string.IsNullOrEmpty(line) && !line.Contains("Купить:"))
+        {
+          if (line.Contains("."))
+          {
+            var pos = line.IndexOf('.');
+            if (pos < line.Length)
+              subStr = line.Substring(pos + 1, line.Length - pos -1 );
+          }
+          list.Add(new ShoppingItemViewModel(subStr));
+        }
+      }
+      return list;
+    }
+
+
     private string CreateListText()
     {
       var text = string.Empty;
@@ -237,6 +299,22 @@ namespace GoShopping
       }
       return i > 0 ? text : string.Empty;
     }
+
+    private void SendToClipBoard()
+    {
+      var text = CreateListText();
+
+      if (!string.IsNullOrEmpty(text))
+      {
+        Clipboard.SetText(text);
+        MessageBox.Show("Ваш список отправлен в буфер обмена", "За покупками", MessageBoxButton.OK);
+      }
+      else
+      {
+        MessageBox.Show("Вам нечего отправить в буфер обмена", "Мы не посылаем пустые списки", MessageBoxButton.OK);
+      }
+    }
+
 
     private void CreateEMail(string address = null)
     {
