@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\GoShopping_Release_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="1/14/2015 7:54:37 PM">
-  <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\obj\ARM\Release\GoShopping.dll" archivePath="GoShopping.dll" lastWriteTime="1/14/2015 7:54:36 PM" />
+﻿<xapCache source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\GoShopping_Release_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="1/14/2015 7:58:07 PM">
+  <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\obj\ARM\Release\GoShopping.dll" archivePath="GoShopping.dll" lastWriteTime="1/14/2015 7:58:05 PM" />
   <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Assets\About.png" archivePath="Assets\About.png" lastWriteTime="1/14/2015 4:18:05 PM" />
   <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="1/14/2015 4:18:05 PM" />
   <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Assets\Delete.png" archivePath="Assets\Delete.png" lastWriteTime="1/14/2015 4:18:05 PM" />
@@ -17,5 +17,5 @@
   <file source="C:\xedin\sources\GoShopping\GoShopping\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.dll" archivePath="Yandex.SpeechKit.dll" lastWriteTime="1/14/2015 4:18:05 PM" />
   <file source="C:\xedin\sources\GoShopping\GoShopping\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.WP8.xml" archivePath="Yandex.SpeechKit.WP8.xml" lastWriteTime="1/14/2015 4:18:05 PM" />
   <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="1/14/2015 4:18:05 PM" />
-  <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="1/14/2015 4:18:05 PM" />
+  <file source="C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="1/14/2015 7:58:07 PM" />
 </xapCache>
