@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -205,8 +206,12 @@ namespace GoShopping
     private void ClipboardGet_OnClick(object sender, EventArgs e)
     {
       if (!Clipboard.ContainsText())
+      {
+        MessageBox.Show("Ваш буфер обмена пуст!", "За покупками", MessageBoxButton.OK);
         return;
-
+      }
+        
+      PasteBox.Text = string.Empty;
       PastePopup.IsOpen = true;
       PasteBox.Focus();
     }
@@ -233,6 +238,15 @@ namespace GoShopping
     private void ButtonClipCancel_OnClick(object sender, RoutedEventArgs e)
     {
       PastePopup.IsOpen = false;
+    }
+
+    protected override void OnBackKeyPress(CancelEventArgs e)
+    {
+      if (this.PastePopup.IsOpen)
+      {
+        PastePopup.IsOpen = false;
+        e.Cancel = true;
+      }
     }
 
     /*private string SearchContacts(string name, bool bPhone)

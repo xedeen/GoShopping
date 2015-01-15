@@ -51,3 +51,17 @@ C:\xedin\sources\GoShopping\GoShopping\GoShopping\obj\ARM\Release\GoShopping.csp
 C:\xedin\sources\GoShopping\GoShopping\GoShopping\obj\ARM\Release\GoShopping.dll
 C:\xedin\sources\GoShopping\GoShopping\GoShopping\obj\ARM\Release\GoShopping.pdb
 C:\xedin\sources\GoShopping\GoShopping\GoShopping\obj\ARM\Release\XapCacheFile.xml
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\Coding4Fun.Toolkit.Controls.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\Coding4Fun.Toolkit.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\cs\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\da\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\de\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\es\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\fr\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\it\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\ko\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\no\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\pl\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\pt\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\ru\Coding4Fun.Toolkit.Controls.resources.dll
+C:\xedin\sources\GoShopping\GoShopping\GoShopping\Bin\ARM\Release\sk\Coding4Fun.Toolkit.Controls.resources.dll

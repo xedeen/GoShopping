@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="clr-namespace:GoShopping.Converters"
     xmlns:controls="clr-namespace:GoShopping.Controls"
+    xmlns:controls1="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -34,167 +35,183 @@
             </Border>
         </ControlTemplate>
     </phone:PhoneApplicationPage.Resources>
-    <Grid Background="WhiteSmoke">
+  <Grid Background="WhiteSmoke">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition  />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Background="#34495e">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition  />
+    </Grid.RowDefinitions>
+    <StackPanel Grid.Row="0" Background="#34495e">
 
-            <Grid  Margin="12,17,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions> 
-                    <TextBlock Text="&#xe14d;" 
+      <Grid  Margin="12,17,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="&#xe14d;" 
                            FontFamily="Segoe UI Symbol"
                            Style="{StaticResource PhoneTextNormalStyle}"
                                FontWeight="Bold"
                            Margin="0,0" />
-                    <TextBlock Grid.Column="1" Text="ЗА ПОКУПКАМИ"
+        <TextBlock Grid.Column="1" Text="ЗА ПОКУПКАМИ"
                        Foreground="White"
                        Style="{StaticResource PhoneTextNormalStyle}"
                        FontFamily="{StaticResource PhoneFontFamilyBold}"
                        Margin="12,0" />
-            </Grid>
-            <TextBlock Text="Чтобы добавить элемент тяните &#x21e3;" FontSize="12" Margin="275,0,0,0"/>
-            <TextBlock Text="Чтобы удалить элемент тяните &#x21e0;" FontSize="12" Margin="275,0,0,0"/>
-            <TextBlock Text="Чтобы пометить / снять пометку &#x21e2;" FontSize="12" Margin="275,0,0,13"/>
-            
-        </StackPanel>
-        <!--LayoutRoot is the root grid where all page content is placed-->
-        <Grid Grid.Row="1"
+      </Grid>
+      <TextBlock Text="Чтобы добавить элемент тяните &#x21e3;" FontSize="12" Margin="275,0,0,0"/>
+      <TextBlock Text="Чтобы удалить элемент тяните &#x21e0;" FontSize="12" Margin="275,0,0,0"/>
+      <TextBlock Text="Чтобы пометить / снять пометку &#x21e2;" FontSize="12" Margin="275,0,0,13"/>
+
+    </StackPanel>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid Grid.Row="1"
         
         x:Name="LayoutRoot" 
         Background="Transparent">
-            <Grid 
+      <Grid 
             x:Name="ContentPanel" 
             Margin="0,0,0,0">
 
-                <controls:PullDownItem x:Name="pullDownItemBehind"
+        <controls:PullDownItem x:Name="pullDownItemBehind"
                           Opacity="0"
                           VerticalAlignment="Top"/>
 
-                <ItemsControl 
-                ItemsSource="{Binding}"
-                x:Name="todoList">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border 
-                            Background="{Binding Path=Color, Converter={StaticResource ColorToBrushConverter}}"
-                            Height="75"
-                            x:Name="todoItem"
-                            Loaded="Border_Loaded">
+        <ItemsControl 
+          ItemsSource="{Binding}"
+          x:Name="todoList">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <Border 
+                Background="{Binding Path=Color, Converter={StaticResource ColorToBrushConverter}}"
+                Height="75"
+                x:Name="todoItem"
+                Loaded="Border_Loaded">
+                <Grid 
+                  Background="{StaticResource itemGradient}">
+                  <TextBlock 
+                    Text="{Binding Text}"
+                    Margin="15,15,0,15" 
+                    FontSize="30"
+                    x:Name="taskText"/>
 
-                                <Grid 
-                                Background="{StaticResource itemGradient}">
-                                    <TextBlock 
-                                    Text="{Binding Text}"
-                                    Margin="15,15,0,15" 
-                                    FontSize="30"
-                                    x:Name="taskText"/>
+                  <!-- editable task text -->
+                  <Grid 
+                    Name="editGrid" 
+                    Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*"></ColumnDefinition>
+                      <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox 
+                      Text="{Binding Text, Mode=TwoWay}"
+                      Template="{StaticResource textBoxTemplate}"
+                      FontSize="30"
+                      Foreground="White"
+                      VerticalAlignment="Center"
+                      x:Name="taskTextEdit"/>
+                  </Grid>
+                  
+                  <!-- the strike-through that is shown when a task is complete -->
+                  <Line 
+                    Visibility="{Binding Path=Completed, Converter={StaticResource BoolToVisibilityConverter}}"
+                    X1="0" Y1="0" X2="1" Y2="0" 
+                    Stretch="UniformToFill"
+                    Stroke="White" 
+                    StrokeThickness="2"
+                    Margin="8,5,8,0"/>
 
-                                    <!-- editable task text -->
-                                    <Grid Name="editGrid" Visibility="Collapsed">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBox 
-                                        Text="{Binding Text, Mode=TwoWay}"
-                                        Template="{StaticResource textBoxTemplate}"
-                                        FontSize="30"
-                                        Foreground="White"
-                                        VerticalAlignment="Center"
-                                        x:Name="taskTextEdit"/>
-                                    </Grid>
+                  <!-- a tick and a cross, rendered off screen -->
+                  <controls:TickAndCross 
+                    Opacity="0" 
+                    x:Name="tickAndCross"/>
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
 
-                                    <!-- the strike-through that is shown when a task is complete -->
-                                    <Line 
-                                    Visibility="{Binding Path=Completed, Converter={StaticResource BoolToVisibilityConverter}}"
-                                    X1="0" Y1="0" X2="1" Y2="0" 
-                                    Stretch="UniformToFill"
-                                    Stroke="White" 
-                                    StrokeThickness="2"
-                                    Margin="8,5,8,0"/>
+          <ItemsControl.Template>
+            <ControlTemplate TargetType="ItemsControl">
+              <ScrollViewer 
+                x:Name="scrollViewer"
+                ManipulationMode="Control">
+                <ItemsPresenter/>
+              </ScrollViewer>
+            </ControlTemplate>
+          </ItemsControl.Template>
+        </ItemsControl>
 
-                                    <!-- a tick and a cross, rendered off screen -->
-                                    <controls:TickAndCross 
-                                    Opacity="0" 
-                                    x:Name="tickAndCross"/>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-
-                    <ItemsControl.Template>
-                        <ControlTemplate TargetType="ItemsControl">
-                            <ScrollViewer x:Name="scrollViewer"
-                          ManipulationMode="Control">
-                                <ItemsPresenter/>
-                            </ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
-                </ItemsControl>
-
-                <controls:PullDownItem 
+        <controls:PullDownItem 
                 x:Name="pullDownItemInFront"
                 Opacity="0"/>
 
-                <controls:DragImage 
+        <controls:DragImage 
                 x:Name="dragImageControl"
                 VerticalAlignment="Top"
                 Visibility="Collapsed"/>
-            </Grid>
-          <Popup Name="PastePopup"
-                 Opacity="1">
-        <Grid
-          Background="White">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-          </Grid.RowDefinitions>
-          <TextBox Name="PasteBox" 
-                   BorderBrush="Black"
-                     Width="480"
-                     Height="250"
-                     TextWrapping="Wrap"
-                     AcceptsReturn="True"
-                     ></TextBox>
-          <Grid Row="1">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto"></ColumnDefinition>
-              <ColumnDefinition Width="Auto"></ColumnDefinition>
-              <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button 
-              Foreground="Black"
-              BorderBrush="Black"
-              Content="Заменить"
-              Click="ButtonClipReplace_OnClick"></Button>
-            <Button 
-              Grid.Column="1"
-              Foreground="Black"
-              BorderBrush="Black"
-              Content="Дописать"
-              Click="ButtonClipAdd_OnClick">
-            </Button>
-            <Button 
-              Grid.Column="2"
-              Foreground="Black"
-              BorderBrush="Black"
-              Content="Отменить"
-              Click="ButtonClipCancel_OnClick"></Button>
-          </Grid>
-        </Grid>
-
-      </Popup>
-        </Grid>
-      
+      </Grid>
     </Grid>
-  
-    <phone:PhoneApplicationPage.ApplicationBar>
+    <Popup 
+      Name="PastePopup"
+      Grid.Row="0">
+      <Grid
+        Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel 
+            Grid.Row="0" 
+            Background="{StaticResource PhoneBackgroundBrush}">
+          <TextBlock Margin="20,10"
+                     Foreground="{StaticResource PhoneForegroundBrush}"
+                     Style="{StaticResource PhoneTextNormalStyle}"
+                     FontFamily="{StaticResource PhoneFontFamilyBold}"   
+                     Text="ВСТАВКА ИЗ БУФЕРА ОБМЕНА"></TextBlock>
+        </StackPanel>
+        <controls1:ChatBubbleTextBox
+          Name="PasteBox"
+          Grid.Row="1"
+          Margin="10,6,10,0" 
+          Background="{StaticResource PhoneForegroundBrush}"
+          BorderBrush="{StaticResource PhoneForegroundBrush}"
+          Foreground="{StaticResource PhoneAccentBrush}"
+          ChatBubbleDirection="UpperLeft" 
+          TextWrapping="Wrap" 
+          AcceptsReturn="True"
+          Width="460"/>
+        <Grid
+          HorizontalAlignment="Right"
+          Row="2"
+          Margin="0,10,0,20">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <HyperlinkButton 
+            Content="Заменить"
+            Foreground="{StaticResource PhoneAccentBrush}"
+            Click="ButtonClipReplace_OnClick"/>
+          <HyperlinkButton 
+            Grid.Column="1"
+            Content="Дописать"
+            Click="ButtonClipAdd_OnClick"
+            Foreground="{StaticResource PhoneAccentBrush}"
+            />
+          <HyperlinkButton 
+            Grid.Column="2"
+            Content="Отменить"
+            Click="ButtonClipCancel_OnClick"
+            Foreground="{StaticResource PhoneAccentBrush}"
+            />
+        </Grid>
+      </Grid>
+    </Popup>
+
+  </Grid>
+  <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/Microphone.png" Text="Говорите!" Click="RecognizeButton_OnClick"/>
             <shell:ApplicationBarIconButton IconUri="/Assets/Delete.png" Text="Очистить список" Click="ClearButton_OnClick"/>

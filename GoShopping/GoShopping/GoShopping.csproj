@@ -190,6 +190,8 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -198,6 +200,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.9\lib\windowsphone8\Coding4Fun.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.9\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Yandex.SpeechKit">
       <HintPath>..\packages\Yandex.SpeechKit.2.0.2\lib\wp8\Yandex.SpeechKit.winmd</HintPath>
     </Reference>
